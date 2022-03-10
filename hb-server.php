@@ -31,7 +31,7 @@ if ( getenv( 'LANDO' ) ) {
 	define( 'WP_DEBUG', true );
 	define( 'WP_DEBUG_LOG', true );
 	define( 'WP_DEBUG_DISPLAY', true );
-} elseif ( strstr( $server_vars['HTTP_HOST'], 'hbserver.dev' ) ) {
+} elseif ( strstr( $server_vars['HOME'], 'hbserver.dev' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'development' );
 	define( 'WP_DEBUG', true );
 	define( 'WP_DEBUG_LOG', true );
@@ -53,9 +53,9 @@ if ( $server_vars['SPINUPWP_SITE'] ) {
  */
 function hb_set_blog_public() {
 	if ( wp_get_environment_type() === 'development' ) {
-		return false;
+		return 0;
 	} elseif ( wp_get_environment_type() === 'production' ) {
-		return true;
+		return 1;
 	}
 }
 add_filter( 'pre_option_blog_public', 'hb_set_blog_public', 0, 999 );
