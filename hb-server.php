@@ -10,7 +10,6 @@
  */
 
 add_filter( 'auto_core_update_send_email', '__return_false' );
-add_filter( 'automatic_updater_disabled', '__return_true' );
 define( 'FORCE_SSL_ADMIN', true );
 
 /**
