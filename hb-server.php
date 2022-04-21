@@ -29,7 +29,7 @@ if ( getenv( 'LANDO' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'local' );
 
 	if ( ! defined( 'WP_DEBUG' ) ) {
-		define('WP_DEBUG', true);
+		define( 'WP_DEBUG', true );
 	}
 
 	define( 'WP_DEBUG_LOG', true );
@@ -38,7 +38,7 @@ if ( getenv( 'LANDO' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
 	if ( ! defined( 'WP_DEBUG' ) ) {
-		define('WP_DEBUG', true);
+		define( 'WP_DEBUG', true );
 	}
 
 	define( 'WP_DEBUG_LOG', true );
@@ -47,7 +47,7 @@ if ( getenv( 'LANDO' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'production' );
 
 	if ( ! defined( 'WP_DEBUG' ) ) {
-		define('WP_DEBUG', false);
+		define( 'WP_DEBUG', false );
 	}
 }
 
