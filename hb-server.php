@@ -35,12 +35,12 @@ if ( getenv( 'LANDO' ) ) {
 	define( 'WP_DEBUG', true );
 	define( 'WP_DEBUG_LOG', true );
 	define( 'WP_DEBUG_DISPLAY', true );
-} elseif ( $server_vars['SPINUPWP_SITE'] ) {
+} elseif ( array_key_exists( 'SPINUPWP_SITE', $server_vars ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'production' );
 }
 
 // Spinup servers only.
-if ( $server_vars['SPINUPWP_SITE'] ) {
+if ( array_key_exists( 'SPINUPWP_SITE', $server_vars ) ) {
 	define( 'DISALLOW_FILE_MODS', true );
 	define( 'WP_AUTO_UPDATE_CORE', 'minor' );
 	define( 'DISABLE_WP_CRON', true );
