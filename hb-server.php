@@ -34,8 +34,13 @@ if ( getenv( 'LANDO' ) ) {
 		define( 'WP_DEBUG', true );
 	}
 
-	define( 'WP_DEBUG_LOG', true );
-	define( 'WP_DEBUG_DISPLAY', true );
+	if ( ! defined( 'WP_DEBUG_LOG' ) ) {
+		define( 'WP_DEBUG_LOG', true );
+	}
+
+	if ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
+		define( 'WP_DEBUG_DISPLAY', true );
+	}
 } elseif ( strstr( $server_vars['HOME'], 'hbserver.dev' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
@@ -43,8 +48,13 @@ if ( getenv( 'LANDO' ) ) {
 		define( 'WP_DEBUG', true );
 	}
 
-	define( 'WP_DEBUG_LOG', true );
-	define( 'WP_DEBUG_DISPLAY', true );
+	if ( ! defined( 'WP_DEBUG_LOG' ) ) {
+		define( 'WP_DEBUG_LOG', true );
+	}
+
+	if ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
+		define( 'WP_DEBUG_DISPLAY', true );
+	}
 } elseif ( array_key_exists( 'SPINUPWP_SITE', $server_vars ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'production' );
 
