@@ -67,7 +67,10 @@ if ( getenv( 'LANDO' ) ) {
 if ( array_key_exists( 'SPINUPWP_SITE', $server_vars ) ) {
 	define( 'DISALLOW_FILE_MODS', true );
 	define( 'WP_AUTO_UPDATE_CORE', 'minor' );
-	define( 'DISABLE_WP_CRON', true );
+
+	if ( ! defined( 'DISABLE_WP_CRON' ) ) {
+		define( 'DISABLE_WP_CRON', true );
+	}
 }
 /**
  * Set Blog Public
