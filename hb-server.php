@@ -101,3 +101,31 @@ function hb_robots_txt( $output, $public ) {
 	return $output;
 }
 add_filter( 'robots_txt', 'hb_robots_txt', 99, 2 );
+
+/**
+ * Remove Yoast SEO Columns
+ *
+ * Credit: Andrew Norcross http://andrewnorcross.com/
+ * Source: https://gist.github.com/amboutwe/18558a7e681e36c6bfe6e4fb647265ce
+ *
+ * If you have custom post types, you can add additional lines in this format
+ * add_filter( 'manage_edit-{$post_type}_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
+ * replacing {$post_type} with the name of the custom post type.
+ *
+ * @param Array $columns Array of SEO Columns.
+ *
+ * @return  Array array of columns.
+ */
+function yoast_seo_admin_remove_columns( $columns ) {
+	unset( $columns['wpseo-score-readability'] );
+	unset( $columns['wpseo-title'] );
+	unset( $columns['wpseo-metadesc'] );
+	unset( $columns['wpseo-focuskw'] );
+	unset( $columns['wpseo-links'] );
+	unset( $columns['wpseo-linked'] );
+	return $columns;
+}
+add_filter( 'manage_edit-post_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
+add_filter( 'manage_edit-tribe_events_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
+add_filter( 'manage_edit-page_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
+add_filter( 'manage_edit-staff_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
