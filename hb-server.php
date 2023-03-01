@@ -129,26 +129,3 @@ add_filter( 'manage_edit-post_columns', 'yoast_seo_admin_remove_columns', 10, 1 
 add_filter( 'manage_edit-tribe_events_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
 add_filter( 'manage_edit-page_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
 add_filter( 'manage_edit-staff_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
-
-/**
- * Activate/Deactivate required plugins.
- */
-function hb_activate_plugins() {
-	if ( wp_get_environment_type() === 'development' || wp_get_environment_type() === 'local' ) {
-		deactivate_plugins(
-			array(
-				'bunnycdn/bunnycdn.php',
-				'ewww-image-optimizer/ewww-image-optimizer.php',
-			),
-		);
-	}
-
-	activate_plugins(
-		array(
-			'display-environment-type/display-environment-type.php',
-			'spinupwp/spinupwp.php',
-			'wp-migrate-db-pro/wp-migrate-db-pro.php',
-		),
-	);
-}
-add_action( 'admin_init', 'hb_activate_plugins', 1 );
