@@ -41,7 +41,7 @@ if ( getenv( 'LANDO' ) ) {
 	if ( ! defined( 'WP_DEBUG_DISPLAY' ) ) {
 		define( 'WP_DEBUG_DISPLAY', true );
 	}
-} elseif ( strstr( $server_vars['HOME'], 'hbserver.dev' ) ) {
+} elseif ( strstr( $server_vars['HOME'], 'hbserver.dev' ) || strstr( $server_vars['HOME'], 'prod.livingsnoqualmie.com' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
 	if ( ! defined( 'WP_DEBUG' ) ) {
