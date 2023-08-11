@@ -30,6 +30,10 @@ $server_vars = isset( $_SERVER ) ? $_SERVER : false;
 if ( getenv( 'LANDO' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'local' );
 
+	if ( ! defined( 'WP_DEVELOPMENT_MODE' ) ) {
+		define( 'WP_DEVELOPMENT_MODE', 'all' );
+	}
+
 	if ( ! defined( 'WP_DEBUG' ) ) {
 		define( 'WP_DEBUG', true );
 	}
