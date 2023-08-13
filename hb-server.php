@@ -34,6 +34,8 @@ if ( getenv( 'LANDO' ) ) {
 		define( 'WP_DEVELOPMENT_MODE', 'all' );
 	}
 
+	define( 'JETPACK_STAGING_MODE', true );
+
 	if ( ! defined( 'WP_DEBUG' ) ) {
 		define( 'WP_DEBUG', true );
 	}
@@ -47,6 +49,7 @@ if ( getenv( 'LANDO' ) ) {
 	}
 } elseif ( strstr( $server_vars['HOME'], 'hbserver.dev' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'development' );
+	define( 'JETPACK_STAGING_MODE', true );
 
 	if ( ! defined( 'WP_DEBUG' ) ) {
 		define( 'WP_DEBUG', true );
@@ -70,6 +73,7 @@ if ( getenv( 'LANDO' ) ) {
 // Spinup servers only.
 if ( array_key_exists( 'SPINUPWP_SITE', $server_vars ) ) {
 	define( 'DISALLOW_FILE_MODS', true );
+
 	define( 'WP_AUTO_UPDATE_CORE', 'minor' );
 
 	if ( ! defined( 'DISABLE_WP_CRON' ) ) {
