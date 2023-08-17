@@ -137,3 +137,48 @@ add_filter( 'manage_edit-post_columns', 'yoast_seo_admin_remove_columns', 10, 1 
 add_filter( 'manage_edit-tribe_events_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
 add_filter( 'manage_edit-page_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
 add_filter( 'manage_edit-staff_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
+
+/**
+ * Make the whole admin bar the env color.
+ */
+function hb_env_colors() {
+	// check is user is an administrator.
+	if ( ! current_user_can( 'manage_options' ) ) :
+		return;
+	endif;
+
+	if ( wp_get_environment_type() === 'development' ) {
+		$color = '#3b9843';
+	} elseif ( wp_get_environment_type() === 'staging' ) {
+		$color = '#d79d00';
+	} elseif ( wp_get_environment_type() === 'production' ) {
+		$color = '#b92a2a';
+	} else {
+		$color = '#0087b1';
+	}
+	?>
+
+	<style>
+		#wpadminbar {
+			background-color: <?php echo esc_attr( $color ); ?>;
+		}
+
+		.edit-post-fullscreen-mode-close.components-button {
+			background-color: <?php echo esc_attr( $color ); ?>;
+		}
+
+		.edit-post-fullscreen-mode-close.components-button:before {
+			box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) <?php echo esc_attr( $color ); ?>;
+		}
+
+		.edit-post-fullscreen-mode-close.components-button:hover:before {
+			box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) <?php echo esc_attr( $color ); ?>;
+		}
+	</style>
+
+	<meta name="theme-color" content="<?php echo esc_attr( $color ); ?>" />
+	<?php
+}
+add_action( 'wp_head', 'hb_env_colors' );
+add_action( 'admin_head', 'hb_env_colors' );
+
