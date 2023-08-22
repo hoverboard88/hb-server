@@ -152,7 +152,7 @@ function hb_env_colors() {
 	} elseif ( wp_get_environment_type() === 'staging' ) {
 		$color = '#d79d00';
 	} elseif ( wp_get_environment_type() === 'production' ) {
-		$color = '#b92a2a';
+		return;
 	} else {
 		$color = '#0087b1';
 	}
@@ -181,4 +181,3 @@ function hb_env_colors() {
 }
 add_action( 'wp_head', 'hb_env_colors' );
 add_action( 'admin_head', 'hb_env_colors' );
-
