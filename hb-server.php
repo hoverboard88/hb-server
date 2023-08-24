@@ -179,7 +179,8 @@ function hb_env_colors() {
 		#wp-admin-bar-gform-forms,
 		#wp-admin-bar-wp-mail-smtp-menu,
 		#wp-admin-bar-comments,
-		#wp-admin-bar-wpseo-menu {
+		#wp-admin-bar-wpseo-menu,
+		#wp-admin-bar-searchwp {
 			display: none;
 		}
 	</style>
