@@ -174,6 +174,14 @@ function hb_env_colors() {
 		.edit-post-fullscreen-mode-close.components-button:hover:before {
 			box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) <?php echo esc_attr( $color ); ?>;
 		}
+
+		/* Hide unneeded Admin Bar links. */
+		#wp-admin-bar-gform-forms,
+		#wp-admin-bar-wp-mail-smtp-menu,
+		#wp-admin-bar-comments,
+		#wp-admin-bar-wpseo-menu {
+			display: none;
+		}
 	</style>
 
 	<meta name="theme-color" content="<?php echo esc_attr( $color ); ?>" />
