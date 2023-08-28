@@ -190,3 +190,24 @@ function hb_env_colors() {
 }
 add_action( 'wp_head', 'hb_env_colors' );
 add_action( 'admin_head', 'hb_env_colors' );
+
+// Filter the yoast title tag and add an emoji.
+function hb_color_title_tag( $title ) {
+	// check is user is an administrator.
+	if ( ! current_user_can( 'manage_options' ) ) :
+		return;
+	endif;
+
+	if ( wp_get_environment_type() === 'development' ) {
+		return '🟢 ' . $title;
+	} elseif ( wp_get_environment_type() === 'staging' ) {
+		return '🟡 ' . $title;
+	} elseif ( wp_get_environment_type() === 'production' ) {
+		return $title;
+	} else {
+		return '🔵 ' . $title;
+	}
+}
+add_filter( 'wpseo_title', 'hb_color_title_tag' );
+add_filter( 'document_title', 'hb_color_title_tag' );
+add_filter( 'admin_title', 'hb_color_title_tag' );
