@@ -196,7 +196,7 @@ add_action( 'admin_head', 'hb_env_colors' );
 function hb_color_title_tag( $title ) {
 	// check is user is an administrator.
 	if ( ! current_user_can( 'manage_options' ) ) :
-		return;
+		return $title;
 	endif;
 
 	if ( wp_get_environment_type() === 'development' ) {
