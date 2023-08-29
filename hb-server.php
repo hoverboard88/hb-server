@@ -152,7 +152,7 @@ function hb_env_colors() {
 	} elseif ( wp_get_environment_type() === 'staging' ) {
 		$color = '#d79d00';
 	} elseif ( wp_get_environment_type() === 'production' ) {
-		return;
+		$color = '#1d2327';
 	} else {
 		$color = '#0087b1';
 	}
