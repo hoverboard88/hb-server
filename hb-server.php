@@ -192,7 +192,13 @@ function hb_env_colors() {
 add_action( 'wp_head', 'hb_env_colors' );
 add_action( 'admin_head', 'hb_env_colors' );
 
-// Filter the yoast title tag and add an emoji.
+/**
+ * Adding emoji to title tag.
+ *
+ * @param   String $title Title tag.
+ *
+ * @return  String Returned title tag.
+ */
 function hb_color_title_tag( $title ) {
 	// check is user is an administrator.
 	if ( ! current_user_can( 'manage_options' ) ) :
