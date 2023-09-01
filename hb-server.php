@@ -180,6 +180,7 @@ function hb_env_colors() {
 		#wp-admin-bar-wp-mail-smtp-menu,
 		#wp-admin-bar-comments,
 		#wp-admin-bar-wpseo-menu,
+		#wp-admin-bar-llar-root,
 		#wp-admin-bar-searchwp,
 		#wp-admin-bar-duplicate-post {
 			display: none;
