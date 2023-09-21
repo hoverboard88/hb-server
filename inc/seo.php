@@ -23,12 +23,12 @@ add_filter( 'pre_option_blog_public', 'hb_set_blog_public', 0, 999 );
  * Change robots.txt when the site is not set to public.
  *
  * @param  string  $output robots.txt output.
- * @param  boolean $public is public or not.
+ * @param  boolean $blog_public is public or not.
  *
  * @return  string robots.txt output
  */
-function hb_robots_txt( $output, $public ) {
-	if ( 0 === $public ) {
+function hb_robots_txt( $output, $blog_public ) {
+	if ( 0 === $blog_public ) {
 		$output = "User-agent: *\nDisallow: /\n\nUser-agent: RavenCrawler\nUser-agent: rogerbot\nUser-agent: dotbot\nUser-agent: SemrushBot\nUser-agent: SemrushBot-SA\nUser-agent: PowerMapper\nUser-agent: Swiftbot\nAllow: /";
 	}
 	return $output;

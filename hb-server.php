@@ -9,6 +9,12 @@
  * @package hb_server
  */
 
+/**
+ * Base file that requires everything.
+ *
+ * @package hb_server
+ */
+
 require plugin_dir_path( __FILE__ ) . '/inc/set-env-vars.php';
 require plugin_dir_path( __FILE__ ) . '/inc/security.php';
 require plugin_dir_path( __FILE__ ) . '/inc/admin-bar-icons.php';
