@@ -15,7 +15,7 @@ if ( getenv( 'LANDO' ) ) {
 		define( 'WP_DEVELOPMENT_MODE', 'all' );
 	}
 
-	define( 'JETPACK_STAGING_MODE', true );
+	define( 'JETPACK_DEV_DEBUG', true );
 
 	if ( ! defined( 'WP_DEBUG' ) ) {
 		define( 'WP_DEBUG', true );
