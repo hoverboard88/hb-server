@@ -20,3 +20,4 @@ require plugin_dir_path( __FILE__ ) . '/inc/security.php';
 require plugin_dir_path( __FILE__ ) . '/inc/admin-bar-icons.php';
 require plugin_dir_path( __FILE__ ) . '/inc/seo.php';
 require plugin_dir_path( __FILE__ ) . '/inc/env-colors.php';
+require plugin_dir_path( __FILE__ ) . '/inc/nit-picky.php';
