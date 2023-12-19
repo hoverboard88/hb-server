@@ -1,0 +1,27 @@
+.attachment-thumbnail{
+	max-width: 100px;
+	max-height: 100px;
+	aspect-ratio: 1;
+	object-fit: cover;
+}
+
+#dashboard-widgets h3.hb-contact-widget__heading {
+	margin-bottom: 0;
+	font-weight: bold;
+}
+
+.hb-contact-widget {
+	display: grid;
+	grid-gap: 20px;
+	grid-template: auto / 100px 1fr;
+}
+
+.hb-contact-width__logo {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.hb-contact-widget__text {
+	display: grid;
+	grid-template: auto / 1fr;
+}
