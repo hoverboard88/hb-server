@@ -1,4 +1,7 @@
 {
+  "name": "hoverboard88/hb-server",
+  "description": "Hoverboard Server MU plugin.",
+  "license": "GPL-2.0-or-later",
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.7",
     "wp-coding-standards/wpcs": "^3",
