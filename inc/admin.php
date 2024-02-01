@@ -71,14 +71,16 @@ add_action( 'admin_enqueue_scripts', 'hb_enqueue_admin_styles' );
  * Increase memory limit for page builders.
  */
 function hb_increase_admin_memory_limit() {
-	if ( current_user_can( 'edit_posts' ) ) {
-		if ( defined( 'ET_CORE' ) ) {
-			ini_set( 'memory_limit', '128M' ); // PHPCS:ignore:WordPress.PHP.IniSet
-		}
+	if ( defined( 'WP_MEMORY_LIMIT' ) ) {
+		return;
+	}
 
-		if ( defined( 'ELEMENTOR_VERSION' ) ) {
-			ini_set( 'memory_limit', '512M' ); // PHPCS:ignore:WordPress.PHP.IniSet
-		}
+	if ( defined( 'ET_CORE' ) ) {
+		define( 'WP_MEMORY_LIMIT', '128M' );
+	}
+
+	if ( defined( 'ELEMENTOR_VERSION' ) ) {
+		define( 'WP_MEMORY_LIMIT', '512M' );
 	}
 }
 add_action( 'admin_init', 'hb_increase_admin_memory_limit' );
