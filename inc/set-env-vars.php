@@ -9,7 +9,9 @@ $server_vars = isset( $_SERVER ) ? $_SERVER : false;
 
 // Set proper env var for env type.
 if ( getenv( 'LANDO' ) ) {
-	define( 'WP_ENVIRONMENT_TYPE', 'local' );
+	if ( ! defined( 'WP_ENVIRONMENT_TYPE' ) ) {
+		define( 'WP_ENVIRONMENT_TYPE', 'local' );
+	}
 
 	if ( ! defined( 'WP_DEVELOPMENT_MODE' ) ) {
 		define( 'WP_DEVELOPMENT_MODE', 'all' );
