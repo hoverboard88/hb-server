@@ -38,7 +38,7 @@ if ( array_key_exists( 'SPINUPWP_SITE', $server_vars ) ) {
  *
  * @return Array Endpoints
  */
-function disable_rest_endpoints ( $endpoints ) {
+function disable_rest_endpoints( $endpoints ) {
 	if ( isset( $endpoints['/wp/v2/users'] ) ) {
 		unset( $endpoints['/wp/v2/users'] );
 	}
@@ -48,4 +48,4 @@ function disable_rest_endpoints ( $endpoints ) {
 	}
 	return $endpoints;
 }
-add_filter( 'rest_endpoints', 'disable_rest_endpoints');
+add_filter( 'rest_endpoints', 'disable_rest_endpoints' );
