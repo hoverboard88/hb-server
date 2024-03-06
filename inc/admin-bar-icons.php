@@ -82,6 +82,11 @@ function hb_get_bar_icons( $user_id = false ) {
 			'name'  => 'The Events Calendar',
 			'value' => $user_id ? get_user_meta( $user_id, 'hb_admin_bar_tribe_events', true ) : false,
 		),
+		array(
+			'key'   => 'wpforms_menu',
+			'name'  => 'WP Forms',
+			'value' => $user_id ? get_user_meta( $user_id, 'hb_admin_bar_wpforms_menu', true ) : false,
+		),
 	);
 }
 
