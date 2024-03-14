@@ -66,3 +66,21 @@ function hb_enqueue_admin_styles() {
 	wp_enqueue_style( 'hb-admin-style', HB_SERVER_URL . '/assets/admin-style.css', array(), filemtime( HB_SERVER_DIR . '/assets/admin-style.css' ) );
 }
 add_action( 'admin_enqueue_scripts', 'hb_enqueue_admin_styles' );
+
+/**
+ * Increase memory limit for page builders.
+ */
+function hb_increase_admin_memory_limit() {
+	if ( defined( 'WP_MEMORY_LIMIT' ) ) {
+		return;
+	}
+
+	if ( defined( 'ET_CORE' ) ) {
+		define( 'WP_MEMORY_LIMIT', '128M' );
+	}
+
+	if ( defined( 'ELEMENTOR_VERSION' ) ) {
+		define( 'WP_MEMORY_LIMIT', '512M' );
+	}
+}
+add_action( 'admin_init', 'hb_increase_admin_memory_limit' );
