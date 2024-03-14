@@ -76,11 +76,11 @@ function hb_increase_admin_memory_limit() {
 	}
 
 	if ( defined( 'ET_CORE' ) ) {
-		define( 'WP_MEMORY_LIMIT', '128M' );
+		ini_set( 'memory_limit', '128M' ); // phpcs:ignore
 	}
 
 	if ( defined( 'ELEMENTOR_VERSION' ) ) {
-		define( 'WP_MEMORY_LIMIT', '512M' );
+		ini_set( 'memory_limit', '512M' ); // phpcs:ignore
 	}
 }
 add_action( 'admin_init', 'hb_increase_admin_memory_limit' );
