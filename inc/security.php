@@ -39,6 +39,10 @@ if ( array_key_exists( 'SPINUPWP_SITE', $server_vars ) ) {
  * @return Array Endpoints
  */
 function disable_rest_endpoints( $endpoints ) {
+	if ( is_user_logged_in() ) {
+		return $endpoints;
+	}
+
 	if ( isset( $endpoints['/wp/v2/users'] ) ) {
 		unset( $endpoints['/wp/v2/users'] );
 	}
