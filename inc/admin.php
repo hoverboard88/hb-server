@@ -71,10 +71,6 @@ add_action( 'admin_enqueue_scripts', 'hb_enqueue_admin_styles' );
  * Increase memory limit for page builders.
  */
 function hb_increase_admin_memory_limit() {
-	if ( defined( 'ET_CORE' ) ) {
-		ini_set( 'memory_limit', '512M' ); // phpcs:ignore
-	}
-
 	if ( defined( 'ELEMENTOR_VERSION' ) ) {
 		ini_set( 'memory_limit', '512M' ); // phpcs:ignore
 	}
