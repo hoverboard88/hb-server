@@ -32,7 +32,6 @@ if ( getenv( 'LANDO' ) ) {
 	}
 } elseif ( strstr( $server_vars['HOME'], 'hbserver.dev' ) ) {
 	define( 'WP_ENVIRONMENT_TYPE', 'development' );
-	define( 'JETPACK_STAGING_MODE', true );
 
 	if ( ! defined( 'WP_DEBUG' ) ) {
 		define( 'WP_DEBUG', true );
