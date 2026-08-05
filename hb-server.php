@@ -28,3 +28,4 @@ require plugin_dir_path( __FILE__ ) . '/inc/nit-picky.php';
 require plugin_dir_path( __FILE__ ) . '/inc/dashboard.php';
 require plugin_dir_path( __FILE__ ) . '/inc/admin.php';
 require plugin_dir_path( __FILE__ ) . '/inc/brand.php';
+require plugin_dir_path( __FILE__ ) . '/inc/media.php';
