@@ -62,3 +62,15 @@ add_filter( 'manage_edit-post_columns', 'yoast_seo_admin_remove_columns', 10, 1 
 add_filter( 'manage_edit-tribe_events_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
 add_filter( 'manage_edit-page_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
 add_filter( 'manage_edit-staff_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
+
+/**
+ * Remove Yoast Redirect menu item from Tools menu if Yoast Premium is not installed to avoid confusion by admins.
+ *
+ * @return void
+ */
+function yoast_seo_admin_remove_redirect_menu_item() {
+	if ( ! class_exists( 'Yoast\WP\SEO\Premium\Main' ) ) {
+		remove_submenu_page( 'tools.php', 'wpseo_redirects_tools' );
+	}
+}
+add_action( 'admin_menu', 'yoast_seo_admin_remove_redirect_menu_item', 999 );
