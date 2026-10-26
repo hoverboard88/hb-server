@@ -36,6 +36,24 @@ function hb_robots_txt( $output, $blog_public ) {
 add_filter( 'robots_txt', 'hb_robots_txt', 99, 2 );
 
 /**
+ * Keep crawlers out of The Events Calendar's filter and export URLs. Every date, page and
+ * view combination is a separate uncached URL, so bots can crawl them forever.
+ *
+ * @param  string  $output robots.txt output.
+ * @param  boolean $blog_public is public or not.
+ *
+ * @return  string robots.txt output
+ */
+function hb_robots_txt_events_calendar( $output, $blog_public ) {
+	if ( ! $blog_public || ! class_exists( 'Tribe__Events__Main' ) ) {
+		return $output;
+	}
+
+	return $output . "\n\nUser-agent: *\nDisallow: /*?*tribe-bar-date=\nDisallow: /*?*eventDate=\nDisallow: /*?*eventDisplay=\nDisallow: /*?*ical=\nDisallow: /*?*tribe_events\n";
+}
+add_filter( 'robots_txt', 'hb_robots_txt_events_calendar', 100, 2 );
+
+/**
  * Remove Yoast SEO Columns
  *
  * Credit: Andrew Norcross http://andrewnorcross.com/
