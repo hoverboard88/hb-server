@@ -48,4 +48,7 @@ if ( getenv( 'LANDO' ) ) {
 	if ( ! defined( 'WP_DEBUG' ) ) {
 		define( 'WP_DEBUG', false );
 	}
+
+	// Stop notices and deprecations from filling the log on every request. Warnings and errors still log.
+	error_reporting( E_ALL & ~E_NOTICE & ~E_USER_NOTICE & ~E_DEPRECATED & ~E_USER_DEPRECATED ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting, WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_error_reporting
 }
