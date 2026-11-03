@@ -29,6 +29,9 @@ if ( 'production' === $hb_environment ) {
 	// Stop notices and deprecations from filling the log on every request. Warnings and errors still log.
 	error_reporting( E_ALL & ~E_NOTICE & ~E_USER_NOTICE & ~E_DEPRECATED & ~E_USER_DEPRECATED ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting, WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_error_reporting
 	ini_set( 'display_errors', '0' ); // phpcs:ignore WordPress.PHP.IniSet.display_errors_Disallowed
+} elseif ( 'development' === $hb_environment && defined( 'WP_CLI' ) && WP_CLI ) {
+	// Keep deprecations from burying WP-CLI output (plugin updates, etc.) on dev. Web requests still show them.
+	error_reporting( E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting, WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_error_reporting
 } else {
 	// Show everything locally and on dev, even if wp-config.php has WP_DEBUG off.
 	error_reporting( E_ALL ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting, WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_error_reporting
