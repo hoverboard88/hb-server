@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<ruleset name="WordPress Coding Standards">
+  <description>PHPCS config for theme using WordPress Coding Standards.</description>
+
+  <!-- Ignore common build/vendor dirs -->
+  <exclude-pattern>*/vendor/*</exclude-pattern>
+
+  <arg name="extensions" value="php"/>
+
+  <!-- WordPress rulesets -->
+  <rule ref="WordPress"/>
+  <rule ref="WordPress-Core" />
+  <rule ref="WordPress-Docs" />
+  <rule ref="WordPress-Extra" />
+</ruleset>

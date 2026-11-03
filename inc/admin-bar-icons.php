@@ -87,6 +87,16 @@ function hb_get_bar_icons( $user_id = false ) {
 			'name'  => 'WP Forms',
 			'value' => $user_id ? get_user_meta( $user_id, 'hb_admin_bar_wpforms_menu', true ) : false,
 		),
+		array(
+			'key'   => 'aioseo_main',
+			'name'  => 'AIO SEO',
+			'value' => $user_id ? get_user_meta( $user_id, 'hb_admin_bar_aioseo_main', true ) : false,
+		),
+		array(
+			'key'   => 'aioseo_admin_bar_noindex_warning',
+			'name'  => 'AIO SEO (Search Engine Block)',
+			'value' => $user_id ? get_user_meta( $user_id, 'hb_admin_bar_aioseo_admin_bar_noindex_warning', true ) : false,
+		),
 	);
 }
 

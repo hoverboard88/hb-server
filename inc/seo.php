@@ -36,6 +36,24 @@ function hb_robots_txt( $output, $blog_public ) {
 add_filter( 'robots_txt', 'hb_robots_txt', 99, 2 );
 
 /**
+ * Keep crawlers out of The Events Calendar's filter and export URLs. Every date, page and
+ * view combination is a separate uncached URL, so bots can crawl them forever.
+ *
+ * @param  string  $output robots.txt output.
+ * @param  boolean $blog_public is public or not.
+ *
+ * @return  string robots.txt output
+ */
+function hb_robots_txt_events_calendar( $output, $blog_public ) {
+	if ( ! $blog_public || ! class_exists( 'Tribe__Events__Main' ) ) {
+		return $output;
+	}
+
+	return $output . "\n\nUser-agent: *\nDisallow: /*?*tribe-bar-date=\nDisallow: /*?*eventDate=\nDisallow: /*?*eventDisplay=\nDisallow: /*?*ical=\nDisallow: /*?*tribe_events\n";
+}
+add_filter( 'robots_txt', 'hb_robots_txt_events_calendar', 100, 2 );
+
+/**
  * Remove Yoast SEO Columns
  *
  * Credit: Andrew Norcross http://andrewnorcross.com/
@@ -62,3 +80,15 @@ add_filter( 'manage_edit-post_columns', 'yoast_seo_admin_remove_columns', 10, 1 
 add_filter( 'manage_edit-tribe_events_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
 add_filter( 'manage_edit-page_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
 add_filter( 'manage_edit-staff_columns', 'yoast_seo_admin_remove_columns', 10, 1 );
+
+/**
+ * Remove Yoast Redirect menu item from Tools menu if Yoast Premium is not installed to avoid confusion by admins.
+ *
+ * @return void
+ */
+function yoast_seo_admin_remove_redirect_menu_item() {
+	if ( ! class_exists( 'Yoast\WP\SEO\Premium\Main' ) ) {
+		remove_submenu_page( 'tools.php', 'wpseo_redirects_tools' );
+	}
+}
+add_action( 'admin_menu', 'yoast_seo_admin_remove_redirect_menu_item', 999 );
