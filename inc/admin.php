@@ -89,3 +89,7 @@ function hb_acf_save_options_page() {
 	do_action( 'spinupwp_purge_page_cache' );
 }
 add_action( 'acf/options_page/save', 'hb_acf_save_options_page' );
+/**
+ * Disable password change emails.
+ */
+add_filter( 'send_password_change_email', '__return_false' );
