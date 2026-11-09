@@ -76,3 +76,8 @@ function hb_increase_admin_memory_limit() {
 	}
 }
 add_action( 'admin_init', 'hb_increase_admin_memory_limit' );
+
+/**
+ * Disable password change emails.
+ */
+add_filter( 'send_password_change_email', '__return_false' );
