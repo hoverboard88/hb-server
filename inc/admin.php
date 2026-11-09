@@ -78,16 +78,14 @@ function hb_increase_admin_memory_limit() {
 add_action( 'admin_init', 'hb_increase_admin_memory_limit' );
 
 /**
- * Purges SpinupWP cache when saving ACF options page.
+ * Purges SpinupWP page cache when saving ACF options page.
  *
- * @param string $post_id   The ID of the current post being saved.
- * @param string $menu_slug The slug of the ACF options page.
+ * Options pages usually hold site-wide content (header, footer, etc.), so purge everything.
+ * SpinupWP listens for this action, so it's a no-op when the plugin isn't active.
  *
  * @return void
  */
-function hb_acf_save_options_page( $post_id, $menu_slug ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-	if ( function_exists( 'spinupwp' ) ) {
-		spinupwp()->cache->purge_page_cache();
-	}
+function hb_acf_save_options_page() {
+	do_action( 'spinupwp_purge_page_cache' );
 }
-add_action( 'acf/options_page/save', 'hb_acf_save_options_page', 10, 2 );
+add_action( 'acf/options_page/save', 'hb_acf_save_options_page' );
